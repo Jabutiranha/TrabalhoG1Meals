@@ -1,0 +1,10 @@
+import { ApiConfig } from "../../config"
+import { httpClient } from "../../infra/http"
+import { Category } from "../model/Category"
+import { Categories } from "../model/Meals"
+
+
+export const getHeadlines = async (): Promise<Category[]> => {
+    const response = await httpClient.get<Categories>(ApiConfig.GET_CATEGORY_MEALS)
+    return response.data.articles
+}
